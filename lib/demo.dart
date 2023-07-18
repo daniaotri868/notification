@@ -2,16 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'NewPage.dart';
 import 'firebase_services.dart';
+import 'inj.dart';
+import 'main.dart';
 
-class NotificationDemo extends StatefulWidget {
-  @override
-  _NotificationDemoState createState() => _NotificationDemoState();
-}
-
-class _NotificationDemoState extends State<NotificationDemo> {
+class NotificationDemo extends StatelessWidget {
+  final  navigatorKey;
   final NotificationService _notificationService = NotificationService();
-  final GlobalKey<NavigatorState> navigatorKey =
-  GlobalKey<NavigatorState>();
+
+   NotificationDemo({super.key, this.navigatorKey});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class _NotificationDemoState extends State<NotificationDemo> {
             Text('This is the app content.'),
             ElevatedButton(
               onPressed: () {
-                navigatorKey.currentState!.push(
+                MyApp.nave.currentState!.push(
                   MaterialPageRoute(builder: (context) => NewPage()),
                 );
               },

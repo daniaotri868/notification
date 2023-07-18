@@ -3,13 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notitifcation/local_services.dart';
 import 'NewPage.dart';
+import 'inj.dart';
+import 'main.dart';
 
 
 class NotificationService {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
-  final GlobalKey<NavigatorState> navigatorKey =
-  GlobalKey<NavigatorState>();
-
+  static String ?title;
+  static String ?body;
 
   Future<void> initialize() async {
     String? token = await _fcm.getToken();
@@ -18,6 +19,7 @@ class NotificationService {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       LocalNotificationService().showNotification(title: message.notification!.title, body: message.notification!.body);
       print('Got a message whilst in the foreground!');
+      // title=
       print('Message data: ${message.data}');
       if (message.notification != null) {
         print('Message also contained a notification: ${message.notification}');
@@ -27,8 +29,11 @@ class NotificationService {
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print('A new onMessageOpenedApp event was published!');
-      navigatorKey.currentState!.push(
-        MaterialPageRoute(builder: (context) => NewPage()),
+      MyApp.nave.currentState!.push(
+        MaterialPageRoute(builder: (context) {
+          print('////////////////////////////');
+          return NewPage();
+        }),
       );
     });
   }
