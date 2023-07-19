@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NewPage extends StatelessWidget {
-  // String title;
-  // String body;
-  //  NewPage({ required this.title, required this.body}) ;
+  String title;
+  String body;
+   NewPage({ required this.title, required this.body}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +11,8 @@ class NewPage extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          Text("title"),
-          Text("body")
+          Text("$title"),
+          Text("$body")
         ],
       ),
     );
