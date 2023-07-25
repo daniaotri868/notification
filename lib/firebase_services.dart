@@ -1,9 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notitifcation/local_services.dart';
 import 'NewPage.dart';
-import 'inj.dart';
 import 'main.dart';
 
 
